@@ -1,0 +1,55 @@
+---
+import Button from "./Button.astro";
+---
+
+<header class="navbar">
+  <nav class="navbar__inner container" aria-label="Main">
+    <a class="navbar__brand" href="#top" aria-label="Comira home">
+      <img src="/assets/images/logo-comira.svg" alt="" role="presentation" width="28" height="28" />
+      <span class="navbar__name">Comira</span>
+    </a>
+    <Button label="Temlis" href="#signup" size="sm" />
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    position: absolute;
+    top: 1.25em;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.875em;
+  }
+
+  .navbar__brand img {
+    width: 1.75em;
+    height: 1.75em;
+  }
+
+  @media (max-width: 767px) {
+    .navbar__brand {
+      min-height: 44px;
+    }
+  }
+
+  .navbar__name {
+    font-family: var(--font-heading);
+    font-size: 1.1667em;
+    font-weight: 400;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--color-text-white);
+  }
+</style>

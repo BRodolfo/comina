@@ -1,0 +1,136 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: "icon-personal-bag.svg",
+    title: "Personalized Training",
+    description: "Custom workout programs designed for your body, goals, and lifestyle.",
+  },
+  {
+    icon: "icon-barbell.svg",
+    title: "On-Demand Workouts",
+    description: "Access video workouts anytime, from strength training to yoga.",
+  },
+  {
+    icon: "icon-egg.svg",
+    title: "Nutrition Guidance",
+    description: "Meal plans and tips to fuel your progress the healthy way.",
+  },
+  {
+    icon: "icon-fitness.svg",
+    title: "Progress Tracking",
+    description: "Track workouts, calories burned, and body transformation in one place.",
+  },
+];
+---
+
+<section class="benefits" id="benefits">
+  <div class="benefits__inner container">
+    <div class="benefits__header">
+      <h2 class="heading-xl">Your Fitness, <span class="text-accent">Your Way</span></h2>
+      <p class="body-text benefits__subheadline">
+        We’re building a platform that adapts to you — with workouts, nutrition, and tools designed to help you reach
+        your goals faster and smarter.
+      </p>
+    </div>
+    <ul class="benefits__features">
+      {
+        features.map((feature) => (
+          <li class="feature">
+            <img src={`/assets/images/${feature.icon}`} alt="" role="presentation" width="48" height="48" />
+            <h3 class="heading-sm">{feature.title}</h3>
+            <p class="body-text">{feature.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    width: 100%;
+    padding-block: 6.25em;
+    background-color: var(--color-bg-black);
+  }
+
+  .benefits__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6.25em;
+  }
+
+  .benefits__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    text-align: center;
+  }
+
+  .benefits__header h2 {
+    white-space: nowrap;
+  }
+
+  .benefits__subheadline {
+    width: 37.5em;
+    max-width: 100%;
+  }
+
+  .benefits__features {
+    display: flex;
+    gap: 6.25em;
+    width: 100%;
+  }
+
+  .feature {
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .feature img {
+    width: 3em;
+    height: 3em;
+  }
+
+  @media (max-width: 991px) {
+    .benefits {
+      padding-block: 4em;
+    }
+
+    .benefits__inner {
+      gap: 3em;
+    }
+
+    .benefits__header h2 {
+      white-space: normal;
+    }
+
+    .benefits__features {
+      flex-wrap: wrap;
+      gap: 3em 2em;
+    }
+
+    .feature {
+      flex: 1 1 calc(50% - 1em);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .feature {
+      flex-basis: 100%;
+    }
+  }
+</style>

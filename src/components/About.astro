@@ -1,0 +1,150 @@
+---
+interface Stat {
+  value: string;
+  description: string;
+}
+
+const stats: Stat[] = [
+  { value: "36", description: "Sea games participation" },
+  { value: "66", description: "World champions" },
+];
+---
+
+<section class="about" id="about">
+  <div class="about__inner container">
+    <h2 class="about__heading heading-xl">
+      Wellness. fitness. mindfulness.<br />
+      brought to your team by <span class="text-accent">peloton.</span>
+    </h2>
+    <div class="about__row">
+      <img
+        class="about__image"
+        src="/assets/images/about-image.jpg"
+        alt="Close-up of a gloved hand gripping a loaded barbell in a gym"
+        width="779"
+        height="528"
+        loading="lazy"
+      />
+      <div class="about__text">
+        <p class="body-text about__description">
+          Of Members report an improvement in meeting their personal fitness goals. Staying motivated can always be a
+          challenge, but with a wide variety of fitness available the perfect way to keep active. Peloton Corporate
+          Wellness is about more than fitness.
+        </p>
+        <dl class="about__stats">
+          {
+            stats.map((stat) => (
+              <div class="stat">
+                <dt class="stat__value heading-xl">
+                  {stat.value}
+                  <span class="text-accent">k</span>
+                </dt>
+                <dd class="body-text stat__description">{stat.description}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    width: 100%;
+    padding-block: 6.25em;
+    background-color: var(--color-bg-black);
+  }
+
+  .about__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 6.25em;
+  }
+
+  .about__row {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 2em;
+  }
+
+  .about__image {
+    flex-shrink: 0;
+    width: 48.6875em;
+    height: 33em;
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+  }
+
+  .about__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5em;
+    width: 27em;
+    color: var(--color-text-white);
+  }
+
+  .about__description {
+    width: 23.5em;
+    max-width: 100%;
+    color: var(--color-text-white);
+  }
+
+  .about__stats {
+    display: flex;
+    gap: 4.125em;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 11.4375em;
+  }
+
+  .stat__description {
+    color: var(--color-text-white);
+  }
+
+  @media (max-width: 991px) {
+    .about {
+      padding-block: 4em;
+    }
+
+    .about__inner {
+      gap: 3em;
+    }
+
+    .about__row {
+      flex-direction: column;
+    }
+
+    .about__image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 779 / 528;
+    }
+
+    .about__text {
+      width: 100%;
+    }
+
+    .about__description {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .about__stats {
+      gap: 2em;
+    }
+
+    .stat {
+      width: auto;
+      flex: 1;
+    }
+  }
+</style>

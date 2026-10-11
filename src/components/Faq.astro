@@ -1,0 +1,173 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const items: FaqItem[] = [
+  {
+    question: "When will the platform launch?",
+    answer:
+      "We’re working hard behind the scenes to bring everything together. Stay tuned — the launch is just around the corner!",
+  },
+  {
+    question: "Is this for beginners or advanced fitness levels?",
+    answer:
+      "Both! Our workouts and programs are designed for all fitness levels, from absolute beginners to seasoned athletes.",
+  },
+  {
+    question: "Do I need special equipment?",
+    answer:
+      "Not at all. Many workouts can be done with bodyweight only. For advanced training, we’ll also provide routines that use dumbbells, resistance bands, or gym equipment.",
+  },
+  {
+    question: "Will there be nutrition support too?",
+    answer:
+      "Yes! Along with workouts, you’ll get access to meal plans, recipes, and nutrition tips to help fuel your fitness goals.",
+  },
+  {
+    question: "Can I access it on mobile?",
+    answer:
+      "Absolutely. You’ll be able to use our platform on desktop, tablet, and mobile so you can train anytime, anywhere.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="faq__inner container">
+    <div class="faq__header">
+      <h2 class="heading-xl">Frequently Asked <span class="text-accent">Questions</span></h2>
+      <p class="body-text faq__subtitle">
+        We’re building a platform that adapts to you — with workouts, nutrition, and tools designed to help you reach
+        your goals faster and smarter.
+      </p>
+    </div>
+    <div class="faq__list">
+      {
+        items.map((item) => (
+          <details class="faq__item" open>
+            <summary class="faq__question">
+              <span class="heading-sm">{item.question}</span>
+              <span class="faq__toggle" aria-hidden="true">
+                <img src="/assets/images/icon-arrow-faq.svg" alt="" role="presentation" width="12" height="24" />
+              </span>
+            </summary>
+            <p class="body-text faq__answer">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    width: 100%;
+    padding-block: 6.25em;
+    background-color: var(--color-bg-black);
+  }
+
+  .faq__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6.25em;
+  }
+
+  .faq__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    text-align: center;
+  }
+
+  .faq__header h2 {
+    white-space: nowrap;
+  }
+
+  .faq__subtitle {
+    width: 37.5em;
+    max-width: 100%;
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    width: 54.5em;
+    max-width: 100%;
+  }
+
+  .faq__item {
+    padding-bottom: calc(1.5em - 1px); /* Figma draws the 1px stroke inside the 24px padding */
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item[open] .faq__question {
+    margin-bottom: 1em;
+  }
+
+  .faq__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary);
+  }
+
+  .faq__toggle img {
+    width: 0.75em;
+    height: 1.5em;
+  }
+
+  .faq__item[open] .faq__toggle img {
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 767px) {
+    .faq__toggle {
+      width: max(2.75em, 44px);
+      height: max(2.75em, 44px);
+    }
+
+    .faq__question {
+      min-height: 44px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .faq {
+      padding-block: 4em;
+    }
+
+    .faq__inner {
+      gap: 3em;
+    }
+
+    .faq__header h2 {
+      white-space: normal;
+    }
+
+    .faq__list {
+      gap: 2em;
+    }
+  }
+</style>

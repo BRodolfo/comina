@@ -1,0 +1,50 @@
+---
+interface Props {
+  label: string;
+  href?: string;
+  size?: "sm" | "md";
+}
+
+const { label, href, size = "sm" } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+
+<Tag class:list={["icon-btn", `icon-btn--${size}`]} href={href} type={href ? undefined : "button"} aria-label={label}>
+  <slot />
+</Tag>
+
+<style>
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+
+  .icon-btn--sm {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .icon-btn--md {
+    width: 3em;
+    height: 3em;
+  }
+
+  @media (max-width: 767px) {
+    .icon-btn--sm,
+    .icon-btn--md {
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .icon-btn--sm {
+      width: max(2.75em, 44px);
+      height: max(2.75em, 44px);
+    }
+  }
+</style>

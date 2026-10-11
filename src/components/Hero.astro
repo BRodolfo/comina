@@ -1,0 +1,154 @@
+---
+import Navbar from "./Navbar.astro";
+import EmailField from "./EmailField.astro";
+---
+
+<section class="hero" id="top">
+  <div class="hero__bg">
+    <img src="/assets/images/hero-background.jpg" alt="" role="presentation" width="2560" height="1707" fetchpriority="high" />
+  </div>
+  <Navbar />
+  <div class="hero__inner container">
+    <div class="hero__content">
+      <h1 class="hero__heading">
+        <span>Get early</span>
+        <span class="text-accent">access</span>
+      </h1>
+      <div class="signup glass" id="signup">
+        <div class="countdown glass" role="timer" aria-label="Time remaining until launch">
+          <span>160</span><span aria-hidden="true">:</span>
+          <span>21</span><span aria-hidden="true">:</span>
+          <span>01</span><span aria-hidden="true">:</span>
+          <span>59</span>
+        </div>
+        <p class="signup__text">
+          We’re getting close. Sign up to get early access to Comira and start building your viral waitlist.
+        </p>
+        <EmailField inputId="hero-email" buttonLabel="Join Waitlist" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 57.6875em;
+    overflow: hidden;
+    background-color: var(--color-bg-hero);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero__bg img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(102.875em, 100%);
+    height: max(68.5625em, 100%);
+    max-width: none;
+    object-fit: cover;
+    transform: translate(calc(-50% - 2.0625em), calc(-50% - 4em));
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+  }
+
+  .hero__heading {
+    font-family: var(--font-heading);
+    font-size: 7.5em;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--color-text-white);
+  }
+
+  .hero__heading span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5em;
+    flex-shrink: 0;
+    width: 26.5em;
+    padding: 1.5em;
+    border-radius: var(--radius-lg);
+  }
+
+  .countdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75em 1.5em;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    color: var(--color-text-white);
+  }
+
+  .signup__text {
+    font-family: var(--font-body);
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--color-text-white);
+  }
+
+  @media (max-width: 991px) {
+    .hero {
+      min-height: 0;
+      padding-block: 7.5em 5em;
+    }
+
+    .hero__content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5em;
+    }
+
+    .hero__bg img {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero__heading {
+      font-size: 6em;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .hero__heading {
+      font-size: 4.5em;
+    }
+
+    .signup {
+      width: 100%;
+    }
+
+    .countdown {
+      font-size: 2em;
+    }
+  }
+</style>

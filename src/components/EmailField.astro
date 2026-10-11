@@ -1,0 +1,67 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  buttonLabel: string;
+  inputId: string;
+}
+
+const { buttonLabel, inputId } = Astro.props;
+---
+
+<form class="email-field glass" action="#" method="post">
+  <label class="sr-only" for={inputId}>Your email address</label>
+  <input id={inputId} class="email-field__input" type="email" name="email" placeholder="Your email address" required />
+  <Button label={buttonLabel} type="submit" size="md" />
+</form>
+
+<style>
+  .email-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+    width: 100%;
+    height: 4em;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+    border-radius: var(--radius-input);
+  }
+
+  .email-field__input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--color-text-white);
+  }
+
+  .email-field__input::placeholder {
+    color: var(--color-text-white);
+    opacity: 1;
+  }
+
+  @media (max-width: 479px) {
+    .email-field {
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      padding: 0.5em;
+      border-radius: 2em;
+    }
+
+    .email-field__input {
+      flex: none;
+      height: 3em;
+      padding-inline: 1em;
+    }
+  }
+
+  .email-field:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style>

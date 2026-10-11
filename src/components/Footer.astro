@@ -1,0 +1,243 @@
+---
+import EmailField from "./EmailField.astro";
+import IconButton from "./IconButton.astro";
+
+const linkColumns = [
+  [
+    { label: "Home", href: "#top" },
+    { label: "About Us", href: "#about" },
+    { label: "Benefits", href: "#benefits" },
+  ],
+  [
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "FAQ’s", href: "#faq" },
+    { label: "Benefits", href: "#benefits" },
+  ],
+];
+---
+
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__top">
+      <div class="newsletter">
+        <h2 class="heading-sm">Subscribe our newsletter</h2>
+        <EmailField inputId="footer-email" buttonLabel="Subscribe" />
+      </div>
+      <div class="footer__brand">
+        <img src="/assets/images/footer-logo-comira.svg" alt="" role="presentation" width="68" height="68" />
+        <span class="footer__name">Comira</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <nav class="footer__links" aria-label="Footer">
+        <h2 class="footer__title">Directly to</h2>
+        <div class="footer__link-columns">
+          {
+            linkColumns.map((column) => (
+              <ul class="footer__column">
+                {column.map((link) => (
+                  <li>
+                    <a class="body-text" href={link.href}>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ))
+          }
+        </div>
+      </nav>
+      <div class="footer__contact">
+        <address class="footer__details">
+          <h2 class="footer__title">Our Office</h2>
+          <a class="body-text" href="mailto:comira@company.com">comira@company.com</a>
+          <a class="body-text" href="tel:+198763991873">+198763991873</a>
+          <p class="body-text">456 Elm Street, Suite 3, Los Angeles, CA 90001, USA</p>
+        </address>
+        <div class="footer__social">
+          <h2 class="footer__title">Follow Us</h2>
+          <ul class="footer__social-list">
+            <li>
+              <IconButton label="X (Twitter)" href="#" size="md">
+                <img src="/assets/images/icon-twitter-x.svg" alt="" role="presentation" width="24" height="24" />
+              </IconButton>
+            </li>
+            <li>
+              <IconButton label="Instagram" href="#" size="md">
+                <span class="instagram">
+                  <img src="/assets/images/icon-instagram.svg" alt="" role="presentation" width="18" height="18" />
+                </span>
+              </IconButton>
+            </li>
+            <li>
+              <IconButton label="Facebook" href="#" size="md">
+                <img src="/assets/images/icon-facebook.svg" alt="" role="presentation" width="24" height="24" />
+              </IconButton>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    width: 100%;
+    padding-block: 5em;
+    background-color: var(--color-bg-black);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+    padding-inline: 3.25em;
+  }
+
+  .footer__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2em;
+  }
+
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 30.75em;
+    max-width: 100%;
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 2.138em;
+  }
+
+  .footer__brand img {
+    width: 4.2758em;
+    height: 4.2758em;
+  }
+
+  .footer__name {
+    font-family: var(--font-heading);
+    font-size: 2.8505em;
+    font-weight: 400;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--color-text-white);
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3em;
+  }
+
+  .footer__title {
+    font-family: var(--font-body);
+    font-size: 1.25em;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-text-white);
+  }
+
+  .footer__links,
+  .footer__details,
+  .footer__social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5em;
+  }
+
+  .footer__link-columns {
+    display: flex;
+    gap: 6.25em;
+  }
+
+  .footer__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  .footer__details {
+    font-style: normal;
+  }
+
+  .footer__contact {
+    display: flex;
+    align-items: flex-start;
+    gap: 5em;
+  }
+
+  .footer__social-list {
+    display: flex;
+    gap: 1.5em;
+  }
+
+  .instagram {
+    position: relative;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .instagram img {
+    position: absolute;
+    inset: 12.5% 12.5% 0.78% 12.5%;
+    width: 75%;
+    height: auto;
+  }
+
+  @media (max-width: 991px) {
+    .footer {
+      padding-block: 4em;
+    }
+
+    .footer__inner {
+      padding-inline: var(--container-padding);
+      gap: 3em;
+    }
+
+    .footer__top {
+      flex-direction: column;
+      gap: 2em;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      gap: 2.5em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .footer__contact {
+      flex-direction: column;
+      gap: 2.5em;
+    }
+
+    .footer__links a,
+    .footer__details a {
+      display: inline-flex;
+      align-items: center;
+      min-height: max(2.75em, 44px);
+      min-width: 44px;
+    }
+
+    .footer__column,
+    .footer__details {
+      gap: 0.25em;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .footer__link-columns {
+      gap: 3em;
+    }
+  }
+</style>

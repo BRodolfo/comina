@@ -1,0 +1,109 @@
+---
+import IconButton from "./IconButton.astro";
+
+const quote =
+  "“My brother I can’t thank you enough even if you say it’s all me. I wouldn’t be the man I am today and without your guidance.”";
+const author = "Laurie Payton";
+---
+
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__inner container">
+    <img
+      class="testimonials__image"
+      src="/assets/images/testimonials-image.jpg"
+      alt="Athlete doing push-ups on kettlebells in a gym"
+      width="610"
+      height="528"
+      loading="lazy"
+    />
+    <div class="testimonials__quote">
+      <figure class="quote">
+        <img src="/assets/images/icon-quote.svg" alt="" role="presentation" width="48" height="48" />
+        <blockquote class="heading-sm">{quote}</blockquote>
+        <figcaption class="body-text">{author}</figcaption>
+      </figure>
+      <div class="testimonials__nav">
+        <IconButton label="Previous testimonial">
+          <img class="arrow arrow--prev" src="/assets/images/icon-arrow-prev.svg" alt="" role="presentation" width="12" height="24" />
+        </IconButton>
+        <IconButton label="Next testimonial">
+          <img class="arrow" src="/assets/images/icon-arrow-next.svg" alt="" role="presentation" width="12" height="24" />
+        </IconButton>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    width: 100%;
+    padding-block: 6.25em;
+    background-color: var(--color-bg-black);
+  }
+
+  .testimonials__inner {
+    display: flex;
+    align-items: center;
+    gap: 6.25em;
+  }
+
+  .testimonials__image {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 33em;
+    border-radius: var(--radius-lg);
+    object-fit: fill; /* Figma renders this photo stretched to the slot, with no cropping */
+  }
+
+  .testimonials__quote {
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    gap: 3em;
+    min-width: 0;
+  }
+
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .quote img {
+    width: 3em;
+    height: 3em;
+  }
+
+  .testimonials__nav {
+    display: flex;
+    gap: 1em;
+  }
+
+  .arrow {
+    width: 0.75em;
+    height: 1.5em;
+  }
+
+  .arrow--prev {
+    transform: scaleX(-1);
+  }
+
+  @media (max-width: 991px) {
+    .testimonials {
+      padding-block: 4em;
+    }
+
+    .testimonials__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 3em;
+    }
+
+    .testimonials__image {
+      flex: none;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 610 / 528;
+    }
+  }
+</style>

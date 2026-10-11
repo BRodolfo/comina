@@ -1,0 +1,61 @@
+---
+interface Props {
+  label: string;
+  href?: string;
+  type?: "button" | "submit";
+  size?: "sm" | "md";
+}
+
+const { label, href, type = "button", size = "md" } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+
+<Tag class:list={["btn", `btn--${size}`]} href={href} type={href ? undefined : type}>
+  <span class="btn__label">{label}</span>
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-accent);
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn--md {
+    height: 3em;
+    padding-inline: 1.75em;
+  }
+
+  .btn--sm {
+    height: 2.5em;
+    padding-inline: 1.25em;
+  }
+
+  .btn__label {
+    font-family: var(--font-body);
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1.333;
+    letter-spacing: 1.44px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .btn--sm,
+    .btn--md {
+      min-height: 44px;
+    }
+
+    .btn--sm {
+      height: max(2.75em, 44px);
+    }
+  }
+</style>
